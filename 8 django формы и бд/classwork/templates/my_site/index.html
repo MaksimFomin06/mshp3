@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    <main>
+      <form action="/" method="post">
+        {% csrf_token %}
+        <div>
+          <label for="numberOneId">Введите число</label>
+          <input type="number" name="numberOneName" id="numberOneId" />
+        </div>
+        <div>
+          <label for="numberTwoId">Введите второе число</label>
+          <input type="number" name="numberTwoName" id="numberTwoId" />
+        </div>
+        <div>
+          <button type="submit">Отправить</button>
+        </div>
+      </form>
+      <ul>
+        {% for data_item in data %}
+          <li>{{ data_item.id }}) {{ data_item.number_one }} + {{ data_item.number_two }} = {{ data_item.number_ans }}</li>
+        {% endfor %}
+      </ul>
+    </main>
+  </body>
+</html>
