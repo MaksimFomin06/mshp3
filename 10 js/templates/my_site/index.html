@@ -1,0 +1,37 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block scripts %}
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+  <script src="{% static 'my_site/js/index.js' %}" defer></script>
+{% endblock %}
+
+{% block main %}
+  <div class="card mt-3">
+    <div class="card-body">
+      <h5 class="card-title">Ввод заметки</h5>
+      <form action="/" method="post">
+        {% csrf_token %}
+
+        <div>
+          <label for="noteText">Текст заметки:</label>
+          <input type="text" name="noteText" id="noteText" />
+        </div>
+        <button class="btn btn-primary mt-1" type="submit">Отправить на сервер</button>
+      </form>
+    </div>
+  </div>
+  <div class="card mt-1">
+    <div class="card-body">
+      <h5 class="card-title">История заметок</h5>
+      <ul id="notesList"></ul>
+    </div>
+  </div>
+  <div class="card mt-1">
+    <div class="card-body">
+      <h5 class="card-title">Кнопочки (и не только) для JS</h5>
+      <button class="btn btn-primary" type="button" id="buttonGetNotes">Получить заметки с сервера</button>
+      <button class="btn btn-primary" type="button" id="buttonPostNote">Отправить данные на сервер</button>
+    </div>
+  </div>
+{% endblock %}
